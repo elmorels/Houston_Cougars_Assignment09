@@ -1,6 +1,6 @@
 # File Name : ProductProcessor.py
-# Student Name: Ryan Jacob
-# email:  Jacobry@mail.uc.edu
+# Student Name: Ryan Jacob, Luke Elmore
+# email:  Jacobry@mail.uc.edu, elmorels@mail.uc.edu
 # Assignment Number: Assignment 09
 # due date: 04/03/2025
 # Course #/Section:  IS4010-002
@@ -37,3 +37,20 @@ class ProductProcessor:
         self.cursor.execute("SELECT Manufacturer FROM tManufacturer WHERE ManufacturerID = ?", manufacturer_id)
         result = self.cursor.fetchone()
         return result.Manufacturer if result else None
+
+    def getBrandName(self, brand):
+       self.cursor.execute("SELECT Brand FROM tBrand WHERE BrandID = ?", brand)
+       result = self.cursor.fetchone()
+       return result.Brand if result else None
+
+    def getItemsSold(self, product_id):
+        self.cursor.execute('''
+            SELECT TOP (100) PERCENT SUM(dbo.tTransactionDetail.QtyOfProduct) AS NumberOfItemsSold
+            FROM dbo.tTransactionDetail INNER JOIN 
+            dbo.tTransaction ON dbo.tTransactionDetail.TransactionID = dbo.tTransaction.TransactionID
+            WHERE dbo.tTransaction.TransactionTypeID = 1 AND dbo.tTransactionDetail.ProductID = ?
+        ''', product_id)
+        result = self.cursor.fetchone()
+        return result.NumberOfItemsSold if result else 0 
+
+    
