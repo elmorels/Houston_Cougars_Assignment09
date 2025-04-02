@@ -1,5 +1,4 @@
-#DatabaseManagement.py
-#Luke Elmore
+#DatabaseManagement.py     
 
 import pyodbc
 
@@ -17,5 +16,7 @@ class DatabaseManagement:
                 'pwd=P@ssword2;')
 
         return conn
+
+
 
 

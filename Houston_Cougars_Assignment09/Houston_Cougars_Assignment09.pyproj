@@ -31,10 +31,17 @@
     <Compile Include="MainPackage\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ProductProcessorPackage\ProductProcessor.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProductProcessorPackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DatabaseManagementPackage\" />
     <Folder Include="MainPackage\" />
+    <Folder Include="ProductProcessorPackage\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
